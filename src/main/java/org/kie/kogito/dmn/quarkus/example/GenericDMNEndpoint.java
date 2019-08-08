@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.kie.dmn.submarine.quarkus.example;
+package org.kie.kogito.dmn.quarkus.example;
 
 import java.util.List;
 import java.util.Map;
@@ -33,15 +33,15 @@ import javax.ws.rs.ext.Provider;
 
 import org.kie.dmn.api.core.DMNModel;
 import org.kie.dmn.api.core.DMNRuntime;
-import org.kie.dmn.submarine.rest.quarkus.DMNModelInfo;
-import org.kie.dmn.submarine.rest.quarkus.DMNModelInfoList;
-import org.kie.dmn.submarine.rest.quarkus.DMNResult;
-import org.kie.dmn.submarine.rest.quarkus.DMNSubmarineQuarkus;
+import org.kie.dmn.kogito.rest.quarkus.DMNKogitoQuarkus;
+import org.kie.dmn.kogito.rest.quarkus.DMNModelInfo;
+import org.kie.dmn.kogito.rest.quarkus.DMNModelInfoList;
+import org.kie.dmn.kogito.rest.quarkus.DMNResult;
 
 @Path("/")
 public class GenericDMNEndpoint {
 
-    static final DMNRuntime dmnRuntime = DMNSubmarineQuarkus.createGenericDMNRuntime();
+    static final DMNRuntime dmnRuntime = DMNKogitoQuarkus.createGenericDMNRuntime();
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -52,10 +52,10 @@ public class GenericDMNEndpoint {
         if (dmnRuntime.getModels().size() > 1 && (modelNamespace == null || modelName == null)) {
             throw new MultipleModelsMissingParams();
         }
-        return DMNSubmarineQuarkus.evaluate(dmnRuntime,
-                                            modelNamespace,
-                                            modelName,
-                                            dmnContext);
+        return DMNKogitoQuarkus.evaluate(dmnRuntime,
+                                         modelNamespace,
+                                         modelName,
+                                         dmnContext);
     }
 
     @GET

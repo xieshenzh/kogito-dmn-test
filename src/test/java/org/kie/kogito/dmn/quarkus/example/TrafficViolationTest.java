@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.kie.dmn.submarine.quarkus.example;
+package org.kie.kogito.dmn.quarkus.example;
 
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;

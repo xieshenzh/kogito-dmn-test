@@ -2,8 +2,8 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.submarine</groupId>
-  <artifactId>submarine-dmn-test</artifactId>
+  <groupId>org.kie.kogito</groupId>
+  <artifactId>kogito-dmn-test</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <properties>
@@ -12,7 +12,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <submarine.version>8.0.0-SNAPSHOT</submarine.version>
+    <kogito.version>8.0.0-SNAPSHOT</kogito.version>
+    <version.org.kie7>7.22.0.Final</version.org.kie7>
   </properties>
 
   <dependencyManagement>
@@ -43,9 +44,45 @@
 
 
     <dependency>
+      <groupId>org.kie.kogito</groupId>
+      <artifactId>kogito-dmn-rest-utils</artifactId>
+      <version>${kogito.version}</version>
+    </dependency>
+
+    <dependency>
       <groupId>org.kie</groupId>
-      <artifactId>kie-dmn-rest-utils</artifactId>
-      <version>${submarine.version}</version>
+      <artifactId>kie-dmn-core</artifactId>
+      <version>${version.org.kie7}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.kie</groupId>
+          <artifactId>kie-internal</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.drools</groupId>
+          <artifactId>drools-mvel-parser</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.kie</groupId>
+          <artifactId>kie-api</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.drools</groupId>
+          <artifactId>drools-model-compiler</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.drools</groupId>
+          <artifactId>drools-core</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.drools</groupId>
+          <artifactId>drools-compiler</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.drools</groupId>
+          <artifactId>drools-canonical-model</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
